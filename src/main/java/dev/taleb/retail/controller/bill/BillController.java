@@ -19,7 +19,7 @@ public class BillController {
 
     private final DiscountService discountService;
 
-    @PostMapping
+    @PostMapping("/calculate")
     public ResponseEntity<PayableBillResponse> getPayableBill(@AuthenticationPrincipal UserDetails userDetails, @RequestBody PayableBillRequest payableBillRequest) {
         return ResponseEntity.ok(PayableBillResponse.from(discountService.getPayableBill(userDetails,payableBillRequest.toBill())));
     }

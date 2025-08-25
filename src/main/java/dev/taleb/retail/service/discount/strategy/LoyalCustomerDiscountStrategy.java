@@ -1,6 +1,5 @@
 package dev.taleb.retail.service.discount.strategy;
 
-import dev.taleb.retail.model.Bill;
 import dev.taleb.retail.model.User;
 import org.springframework.stereotype.Component;
 
