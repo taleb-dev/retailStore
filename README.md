@@ -30,8 +30,44 @@ based on the following discount rules:
 ```bash
 docker-compose up --build
 ```
+Tip: for insert dummy data for users active **dummy** profile 
 - App → http://localhost:8080
 - MongoDB → mongodb://localhost:27017/retaildb
+
+### 2. Call the APIs
+
+- Login (get JWT):
+```bash
+curl -sS -X POST http://localhost:8080/api/auth/login \
+  -H 'Content-Type: application/json' \
+  -d '{
+        "username": "<your-username>",
+        "password": "<your-password>"
+      }'
+```
+Example response:
+```json
+{"token":"<JWT_TOKEN>"}
+```
+
+- Calculate bill (authorized):
+```bash
+TOKEN="<JWT_TOKEN>"
+curl -sS -X POST http://localhost:8080/api/bills/calculate \
+  -H "Authorization: Bearer $TOKEN" \
+  -H 'Content-Type: application/json' \
+  -d '{
+        "items": [
+          {"name": "TV", "category": "OTHER", "price": 1000},
+          {"name": "Apples", "category": "GROCERY", "price": 50}
+        ],
+        "totalAmount": 1050
+      }'
+```
+Notes:
+- Base path is /api (see application.properties).
+- Item.category must be one of: GROCERY, OTHER.
+- Only non-grocery items get percentage discounts; $5 per $100 applies to the total amount.
 
 ---
 
