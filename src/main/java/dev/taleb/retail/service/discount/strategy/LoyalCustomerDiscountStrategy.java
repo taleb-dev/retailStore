@@ -10,8 +10,8 @@ import java.time.temporal.ChronoUnit;
 @Component
 public class LoyalCustomerDiscountStrategy implements DiscountStrategy {
     @Override
-    public double applyDiscount(Bill bill) {
-        return bill.getTotalAmount() * 0.05;
+    public double applyDiscount(Double totalAmount) {
+        return totalAmount * 0.05;
     }
 
     @Override

@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class AffiliateDiscountStrategy implements DiscountStrategy {
     @Override
-    public double applyDiscount(Bill bill) {
-        return bill.getTotalAmount() * 0.10;
+    public double applyDiscount(Double totalAmount) {
+        return totalAmount * 0.10;
     }
 
     @Override

@@ -24,33 +24,33 @@ public class LoadDummyUserData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        List<User> dummyUsers = List.of(
-//
-//                User.builder()
-//                        .role(User.Role.CUSTOMER)
-//                        .password(passwordEncoder.encode("customer"))
-//                        .username("customer")
-//                        .name("customer")
-//                        .registrationDate(LocalDate.now())
-//                        .build(),
-//
-//                User.builder()
-//                        .role(User.Role.AFFILIATE)
-//                        .password(passwordEncoder.encode("affiliate"))
-//                        .username("affiliate")
-//                        .name("affiliate")
-//                        .registrationDate(LocalDate.now())
-//                        .build(),
-//                User.builder()
-//                        .role(User.Role.EMPLOYEE)
-//                        .password(passwordEncoder.encode("employee"))
-//                        .username("employee")
-//                        .name("employee")
-//                        .registrationDate(LocalDate.now())
-//                        .build()
-//        );
-//
-//        userRepository.saveAll(dummyUsers);
+        List<User> dummyUsers = List.of(
+
+                User.builder()
+                        .role(User.Role.CUSTOMER)
+                        .password(passwordEncoder.encode("customer"))
+                        .username("customer")
+                        .name("customer")
+                        .registrationDate(LocalDate.now())
+                        .build(),
+
+                User.builder()
+                        .role(User.Role.AFFILIATE)
+                        .password(passwordEncoder.encode("affiliate"))
+                        .username("affiliate")
+                        .name("affiliate")
+                        .registrationDate(LocalDate.now())
+                        .build(),
+                User.builder()
+                        .role(User.Role.EMPLOYEE)
+                        .password(passwordEncoder.encode("employee"))
+                        .username("employee")
+                        .name("employee")
+                        .registrationDate(LocalDate.now())
+                        .build()
+        );
+
+        userRepository.saveAll(dummyUsers);
         log.info("dummy users saved");
     }
 }
