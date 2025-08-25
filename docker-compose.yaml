@@ -1,6 +1,22 @@
 version: "3.9"
 
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: retail-app:latest
+    container_name: retail-app
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/retaildb
+      - JWT_SECRET=ZmFrZVNlY3JldCAyNTYgYml0cyBiYXNlNjQ=
+      - JWT_EXPIRATION_MS=3600000
+    depends_on:
+      - mongodb
+
   mongodb:
     image: mongo:8.0
     restart: always
